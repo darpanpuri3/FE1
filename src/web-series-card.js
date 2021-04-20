@@ -2,6 +2,14 @@ import {html, css, LitElement} from 'lit-element';
 
 export class WebCard extends LitElement {
 
+    constructor(){
+        super();
+        this.title="abc";
+        this.dir="efg";
+        this.stars="hijk";
+        this.streaming="lmnop";
+    }
+
     static get styles(){
         return css `
         .card {
@@ -20,14 +28,22 @@ export class WebCard extends LitElement {
         `;
     }
 
+    _clearInfo(){
+        console.log("This method is working bitch!");
+        this.title="";
+        this.dir="";
+        this.stars="";
+        this.streaming="";
+    }
+
     render(){
         return html `
         <div class="card">
-            <div class="cardelement">Title : ABC</div>
-            <div class="cardelement">Directors : XYZ</div>
-            <div class="cardelement">Stars : PQR</div>
-            <div class="cardelement">Streaming on : MNO</div>
-            <div class="cardelement"><button class="del" id="b1" onclick="remove('1');">Remove</button></div>
+            <div class="cardelement">Title : ${this.title}</div>
+            <div class="cardelement">Directors : ${this.dir}</div>
+            <div class="cardelement">Stars : ${this.stars}</div>
+            <div class="cardelement">Streaming on : ${this.streaming}</div>
+            <div class="cardelement"><button class="del" id="b1" @click="${this._clearInfo}">Remove</button></div>
         </div>
         `;
     }
