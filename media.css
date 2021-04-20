@@ -1,0 +1,30 @@
+@media only screen and (max-width : 768px){
+	.main{
+		width:100%;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.userinput{
+		margin-left:2%;
+		margin-right: 2%;
+		margin-top:5%;
+		width:87%;
+	}
+
+	.cards{
+		margin-left:2%;
+		margin-right: 2%;
+		margin-top:5%;
+		width:96%;
+	}
+
+	.upper_row{
+		flex-direction:column;
+		justify-content: center;
+	}
+
+	.lower_row{
+		flex-direction:column;
+		justify-content:center;
+	}
