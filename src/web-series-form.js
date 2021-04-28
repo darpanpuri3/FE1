@@ -90,9 +90,6 @@ export class WebSeriesForm extends LitElement {
       background-color: #8c8b32;
       color: #fff;
     }
-
-      
-    
     `;
   }
 
@@ -100,24 +97,26 @@ export class WebSeriesForm extends LitElement {
 
       const card=document.querySelector('web-series-overview');
       let n=card.children.length;
-      for (let i=0;i<n;i+=1)
+      for (let i=0;i<n;i=i+1)
       {
         if (card.children[i].title==="")
         {
-          card.children[i].title=this.title;
-          card.children[i].dir=this.dir;
-          card.children[i].stars=this.stars;
-          card.children[i].streaming=this.streaming;
+          card.children[i].title=this.shadowRoot.querySelector('input#tit').value;
+          card.children[i].dir=this.shadowRoot.querySelector('input#dir').value;
+          card.children[i].stars=this.shadowRoot.querySelector('input#str').value;
+          card.children[i].streaming=this.shadowRoot.querySelector('select#srm').value;
+          break;
         }
-        break;
+
       }
+      console.log('oki');
       
   }
 
   render() {
     return html`
       <div class="userinput">
-        <form action="" method="post" id="form">
+        <form action="" method="post" idnpm start="form">
           <div class="entry">
             <div class="labels">
               <label for="title">Title:</label>
@@ -139,7 +138,7 @@ export class WebSeriesForm extends LitElement {
           </div>
           <div class="button">
             <button
-              type="submit"
+              type="button"
               form="form"
               value="Submit"
               class="b"

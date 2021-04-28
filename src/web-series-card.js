@@ -13,10 +13,10 @@ export class WebCard extends LitElement {
 
     constructor(){
         super();
-        this.title="abc";
-        this.dir="efg";
-        this.stars="hijk";
-        this.streaming="lmnop";
+        this.title="";
+        this.dir="";
+        this.stars="";
+        this.streaming="";
     }
 
     static get styles(){
