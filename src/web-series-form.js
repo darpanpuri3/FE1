@@ -1,6 +1,22 @@
 import { html, LitElement, css } from 'lit-element';
 
 export class WebSeriesForm extends LitElement {
+  static get properties(){
+    return {
+    title : {type:String},
+    dir : {type : String},
+    stars : {type : String},
+    streaming : {type : String}
+    }
+}
+
+  constructor(){
+    super();
+    this.title="";
+    this.stars="";
+    this.dir="";
+    this.streaming="";
+  }
 
   static get styles(){
     return  css `
@@ -68,20 +84,40 @@ export class WebSeriesForm extends LitElement {
       border-radius: 30%;
       padding: 2%;
       transition: color 0.5s, background-color 0.5s;
-    }
+    } 
     
     .b:hover {
       background-color: #8c8b32;
       color: #fff;
     }
+
+      
     
     `;
+  }
+
+  _addInfo(){
+
+      const card=document.querySelector('web-series-overview');
+      let n=card.children.length;
+      for (let i=0;i<n;i+=1)
+      {
+        if (card.children[i].title==="")
+        {
+          card.children[i].title=this.title;
+          card.children[i].dir=this.dir;
+          card.children[i].stars=this.stars;
+          card.children[i].streaming=this.streaming;
+        }
+        break;
+      }
+      
   }
 
   render() {
     return html`
       <div class="userinput">
-        <form action="" method="post" class="form">
+        <form action="" method="post" id="form">
           <div class="entry">
             <div class="labels">
               <label for="title">Title:</label>
@@ -91,13 +127,7 @@ export class WebSeriesForm extends LitElement {
             </div>
             <div class="inputs">
               <input type="text" class="user" name="title" id="tit" required />
-              <input
-                type="text"
-                class="user"
-                name="directors"
-                id="dir"
-                required
-              />
+              <input type="text" class="user" name="directors" id="dir" required/>
               <input type="text" class="user" name="stars" id="str" required />
               <select name="streaming" id="srm" class="user">
                 <option value="netflix">Netflix</option>
@@ -113,7 +143,7 @@ export class WebSeriesForm extends LitElement {
               form="form"
               value="Submit"
               class="b"
-              onclick="access()"
+              @click="${this._addInfo}"
             >
               Add
             </button>

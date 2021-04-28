@@ -2,6 +2,15 @@ import {html, css, LitElement} from 'lit-element';
 
 export class WebCard extends LitElement {
 
+    static get properties(){
+        return {
+        title : {type:String},
+        dir : {type : String},
+        stars : {type : String},
+        streaming : {type : String}
+        }
+    }
+
     constructor(){
         super();
         this.title="abc";
