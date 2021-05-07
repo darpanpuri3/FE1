@@ -117,10 +117,10 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
       {
         if (card.children[i].title==="")
         {
-          card.children[i].title=this.shadowRoot.querySelector('input#tit').value;
-          card.children[i].dir=this.shadowRoot.querySelector('input#dir').value;
-          card.children[i].stars=this.shadowRoot.querySelector('input#str').value;
-          card.children[i].streaming=this.shadowRoot.querySelector('select#srm').value;
+          card.children[i].title=this.shadowRoot.querySelector('#tit').value;
+          card.children[i].dir=this.shadowRoot.querySelector('#dir').value;
+          card.children[i].stars=this.shadowRoot.querySelector('#str').value;
+          card.children[i].streaming=this.shadowRoot.querySelector('#srm').value;
           break;
         }
 
@@ -139,19 +139,22 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
               <label for="streaming">Streaming on:</label>
             </div>
             <div class="inputs">
-              <input type="text" class="user" name="title" id="tit" required />
-              <input type="text" class="user" name="directors" id="dir" required/>
-              <input type="text" class="user" name="stars" id="str" required />
-              <select name="streaming" id="srm" class="user">
+              <lion-input type="text" class="user" name="title" id="tit"></lion-input>
+              <lion-input type="text" class="user" name="directors" id="dir"></lion-input>
+              <lion-input type="text" class="user" name="stars" id="str"></lion-input>
+              <lion-select name="streaming" id="srm" class="user">
+              <select slot="input">
+                <option selected hidden value>Select Web Series</option>
                 <option value="netflix">Netflix</option>
                 <option value="amazon">Amazon</option>
                 <option value="zee5">ZEE 5</option>
                 <option value="hotstar">Hotstar</option>
               </select>
+              </lion-select>
             </div>
           </div>
           <div class="button">
-            <button
+            <lion-button
               type="button"
               form="form"
               value="Submit"
@@ -159,7 +162,7 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
               @click="${this._addInfo}"
             >
               Add
-            </button>
+            </lion-button>
           </div>
         </form>
       </div>
