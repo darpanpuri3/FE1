@@ -1,6 +1,13 @@
-import { html, LitElement, css } from '@lion/core';
+import { html, LitElement, css, ScopedElementsMixin } from '@lion/core';
+import {LionTabs} from '@lion/tabs';
 
-export class WebSeriesOverview extends LitElement {
+export class WebSeriesOverview extends ScopedElementsMixin(LitElement) {
+    static get scopedElements(){
+      return {
+        'lion-tabs':LionTabs
+      };
+    }
+
     static get styles()
     {
         return css `
@@ -21,9 +28,12 @@ export class WebSeriesOverview extends LitElement {
 
     render(){
         return html `
-        <div class="cards">
+        <lion-tabs>
+        <button slot="tab">Info</button>
+        <div class="cards" slot="panel">
           <slot></slot>
       </div>
+      </lion-tabs>
         `;
     }
 }

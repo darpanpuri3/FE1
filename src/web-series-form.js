@@ -1,6 +1,21 @@
-import { html, LitElement, css } from '@lion/core';
+import { html, LitElement, css, ScopedElementsMixin } from '@lion/core';
+import {LionForm} from '@lion/form'
+import {LionInput} from '@lion/input';
+import {LionSelect} from '@lion/select';
+import {LionButton} from '@lion/button';
 
-export class WebSeriesForm extends LitElement {
+
+
+export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
+  static get scopedElements(){
+    return {
+      'lion-form':LionForm,
+      'lion-input':LionInput,
+      'lion-select':LionSelect,
+      'lion-button':LionButton
+    };
+  }
+
   static get properties(){
     return {
     title : {type:String},
@@ -45,6 +60,7 @@ export class WebSeriesForm extends LitElement {
       flex-direction: row;
       margin-bottom: 5%;
     }
+
     .labels {
       height: 80%;
       width: 50%;
