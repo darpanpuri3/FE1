@@ -1,4 +1,4 @@
-import {html, css, LitElement} from 'lit-element';
+import {html, css, LitElement} from '@lion/core';
 
 export class WebCard extends LitElement {
 
@@ -38,7 +38,6 @@ export class WebCard extends LitElement {
     }
 
     _clearInfo(){
-        console.log("This method is working bitch!");
         this.title="";
         this.dir="";
         this.stars="";

@@ -1,4 +1,4 @@
-import { html, LitElement, css } from 'lit-element';
+import { html, LitElement, css } from '@lion/core';
 
 export class WebSeriesOverview extends LitElement {
     static get styles()

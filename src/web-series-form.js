@@ -1,4 +1,4 @@
-import { html, LitElement, css } from 'lit-element';
+import { html, LitElement, css } from '@lion/core';
 
 export class WebSeriesForm extends LitElement {
   static get properties(){
@@ -96,8 +96,8 @@ export class WebSeriesForm extends LitElement {
   _addInfo(){
 
       const card=document.querySelector('web-series-overview');
-      let n=card.children.length;
-      for (let i=0;i<n;i=i+1)
+      const n=card.children.length;
+      for (let i=0;i<n;i+=1)
       {
         if (card.children[i].title==="")
         {
@@ -108,9 +108,7 @@ export class WebSeriesForm extends LitElement {
           break;
         }
 
-      }
-      console.log('oki');
-      
+      }      
   }
 
   render() {
