@@ -3,10 +3,17 @@ import {LionForm} from '@lion/form'
 import {LionInput} from '@lion/input';
 import {LionSelect} from '@lion/select';
 import {LionButton} from '@lion/button';
+import { Required } from '@lion/form-core';
+import {loadDefaultFeedbackMessages} from '@lion/validate-messages'
+import {NoNumbersValidator} from './NoNumbersValidator.js';
 
+loadDefaultFeedbackMessages();
 
 
 export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
+
+  
+
   static get scopedElements(){
     return {
       'lion-form':LionForm,
@@ -109,6 +116,8 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
     `;
   }
 
+  
+
   _addInfo(){
 
       const card=document.querySelector('web-series-overview');
@@ -128,6 +137,11 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
   }
 
   render() {
+    const inputformat = (modelValue) => {
+      console.log('I am here');
+      return modelValue.charAt(0).toUpperCase();
+    };
+
     return html`
       <div class="userinput">
         <form action="" method="post" idnpm start="form">
@@ -139,10 +153,17 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
               <label for="streaming">Streaming on:</label>
             </div>
             <div class="inputs">
-              <lion-input type="text" class="user" name="title" id="tit"></lion-input>
-              <lion-input type="text" class="user" name="directors" id="dir"></lion-input>
-              <lion-input type="text" class="user" name="stars" id="str"></lion-input>
-              <lion-select name="streaming" id="srm" class="user">
+              <lion-input type="text" class="user" name="title" 
+              id="tit" .validators=${[new Required(),new NoNumbersValidator()]}
+              .modelValue="${'Enter title'}"
+              .formatters="${inputformat}"></lion-input>
+              <lion-input type="text" 
+              class="user" 
+              name="directors" 
+              id="dir"
+              .validators=${[new Required(),new NoNumbersValidator()]}></lion-input>
+              <lion-input type="text" class="user" name="stars" id="str" .validators=${[new Required(),new NoNumbersValidator()]}></lion-input>
+              <lion-select name="streaming" id="srm" class="user" .validators=${[new Required(),new NoNumbersValidator()]}>
               <select slot="input">
                 <option selected hidden value>Select Web Series</option>
                 <option value="netflix">Netflix</option>
