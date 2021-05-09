@@ -137,10 +137,8 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
   }
 
   render() {
-    const inputformat = (modelValue) => {
-      console.log('I am here');
-      return modelValue.charAt(0).toUpperCase();
-    };
+    const inputformat = (modelValue) => modelValue.charAt(0).toUpperCase()+modelValue.slice(1);
+    ;
 
     return html`
       <div class="userinput">
@@ -156,7 +154,7 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
               <lion-input type="text" class="user" name="title" 
               id="tit" .validators=${[new Required(),new NoNumbersValidator()]}
               .modelValue="${'Enter title'}"
-              .formatters="${inputformat}"></lion-input>
+              .preprocessor=${inputformat}></lion-input>
               <lion-input type="text" 
               class="user" 
               name="directors" 
