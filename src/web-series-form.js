@@ -38,7 +38,10 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
     this.stars="";
     this.dir="";
     this.streaming="";
+    
   }
+
+
 
   static get styles(){
     return  css `
@@ -81,6 +84,7 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
       margin-left: 30%;
       margin-bottom: 5%;
     }
+
     .inputs {
       height: 80%;
       width: 50%;
@@ -117,9 +121,15 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
   }
 
   
+ 
+
+
 
   _addInfo(){
 
+      fetch('../data.json')
+      .then(response=>response.json())
+      .then(data=>console.log(data));
       const card=document.querySelector('web-series-overview');
       const n=card.children.length;
       for (let i=0;i<n;i+=1)
@@ -142,7 +152,7 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
 
     return html`
       <div class="userinput">
-        <form action="" method="post" idnpm start="form">
+        <form id="form1">
           <div class="entry">
             <div class="labels">
               <label for="title">Title:</label>
@@ -175,10 +185,10 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
           <div class="button">
             <lion-button
               type="button"
-              form="form"
+              form="form1"
               value="Submit"
-              class="b"
               @click="${this._addInfo}"
+              class="b"
             >
               Add
             </lion-button>
