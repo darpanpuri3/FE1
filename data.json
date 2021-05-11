@@ -1,7 +1,53 @@
 {
-    "screens":
+  "shows": [
     {
-    "id":1,
-    "title":"darpan"
+      "title": "batman",
+      "director": "superman",
+      "stars": "green lantern",
+      "streaming": "netflix",
+      "id": 1
+    },
+    {
+      "title": "batman",
+      "director": "superman",
+      "stars": "green lantern",
+      "streaming": "netflix",
+      "id": 2
+    },
+    {
+      "title": "batman",
+      "director": "superman",
+      "stars": "green lantern",
+      "streaming": "netflix",
+      "id": 3
+    },
+    {
+      "title": "batman",
+      "director": "superman",
+      "stars": "green lantern",
+      "streaming": "netflix",
+      "id": 4
+    },
+    {
+      "title": "batman",
+      "director": "superman",
+      "stars": "green lantern",
+      "streaming": "netflix",
+      "id": 5
+    },
+    {
+      "title": "batman",
+      "director": "superman",
+      "stars": "green lantern",
+      "streaming": "netflix",
+      "id": 6
+    },
+    {
+      "title": "batman",
+      "director": "superman",
+      "stars": "green lantern",
+      "streaming": "netflix",
+      "id": 7
     }
+  ]
 }

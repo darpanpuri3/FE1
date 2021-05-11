@@ -125,11 +125,35 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
 
 
 
-  _addInfo(){
+  async _addInfo(){
 
-      fetch('http://127.0.0.1:3000/screens')
-      .then(response=>response.json())
-      .then(data=>console.log(data));
+
+      const title=this.shadowRoot.getElementById('tit').value;
+      const director=this.shadowRoot.getElementById('dir').value;
+      const stars=this.shadowRoot.getElementById('str').value;
+      const streaming=this.shadowRoot.getElementById('srm').value;
+      const data={
+        "title":title,
+        "director":director,
+        "stars":stars,
+        "streaming":streaming
+      }
+
+
+      await fetch('http://127.0.0.1:3000/shows', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(reply => {
+        console.log('Success:', reply);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
       const card=document.querySelector('web-series-overview');
       const n=card.children.length;
       for (let i=0;i<n;i+=1)
@@ -163,17 +187,18 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
             <div class="inputs">
               <lion-input type="text" class="user" name="title" 
               id="tit" .validators=${[new Required(),new NoNumbersValidator()]}
-              .modelValue="${'Enter title'}"
+              .modelValue="${'batman'}"
               .preprocessor=${inputformat}></lion-input>
               <lion-input type="text" 
               class="user" 
               name="directors" 
               id="dir"
+              .validators=${[new Required(),new NoNumbersValidator()]} .modelValue="${'superman'}"></lion-input>
+              <lion-input type="text" class="user" name="stars" id="str" 
+              .modelValue="${'green lantern'}"
               .validators=${[new Required(),new NoNumbersValidator()]}></lion-input>
-              <lion-input type="text" class="user" name="stars" id="str" .validators=${[new Required(),new NoNumbersValidator()]}></lion-input>
               <lion-select name="streaming" id="srm" class="user" .validators=${[new Required(),new NoNumbersValidator()]}>
               <select slot="input">
-                <option selected hidden value>Select Web Series</option>
                 <option value="netflix">Netflix</option>
                 <option value="amazon">Amazon</option>
                 <option value="zee5">ZEE 5</option>
