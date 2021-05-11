@@ -127,7 +127,7 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement) {
 
   _addInfo(){
 
-      fetch('../data.json')
+      fetch('http://127.0.0.1:3000/screens')
       .then(response=>response.json())
       .then(data=>console.log(data));
       const card=document.querySelector('web-series-overview');
